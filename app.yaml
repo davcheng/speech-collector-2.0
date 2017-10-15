@@ -1,0 +1,19 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+# [START handlers]
+handlers:
+- url: /static
+  static_dir: static
+  secure: always
+- url: /.*
+  script: main.app
+  secure: always
+# [END handlers]
+
+#[START env]
+env_variables:
+    CLOUD_STORAGE_BUCKET: speech-up-data
+    SESSION_SECRET_KEY: AIzaSyBFyn7xw9KXM_e2V7HgMQNxeKApyce1kng
+#[END env]
