@@ -228,7 +228,7 @@ function shuffle(array) {
   return array;
 }
 
-var wantedWords = shuffle(allWords).slice(1,8);
+var wantedWords = shuffle(allWords).slice(1,1);
 
 // var wantedWords = [
 //   'Shop',
