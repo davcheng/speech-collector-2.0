@@ -17,28 +17,43 @@ source path.bash.inc
 source completion.bash.inc
 
 
+
+Enabling APIs
+gcloud service-management enable storage-component.googleapis.com
+gcloud service-management enable storage-api.googleapis.com
+
+
+Authenticate API requests
+first try this:
+https://cloud.google.com/python/getting-started/tutorial-app
+gcloud auth application-default login
+gcloud config set project speech-up-record-app
+
+
 https://codelabs.developers.google.com/codelabs/cloud-vision-app-engine/index.html?index=..%2F..%2Findex#6
-export PROJECT_ID=speech-up-voice-collector
-gcloud iam service-accounts create voice-data-app --display-name "voice data app key"
+export PROJECT_ID=speech-up-record-app
+<!-- gcloud iam service-accounts create speech-up-record-app-account --display-name "speech-up-record-app account"
 
-gcloud projects add-iam-policy-binding speech-up-voice-collector --member serviceAccount:voice-data-app@${PROJECT_ID}.iam.gserviceaccount.com --role roles/owner
+gcloud projects add-iam-policy-binding ${PROJECT_ID} --member serviceAccount:speech-up-record-app-account@${PROJECT_ID}.iam.gserviceaccount.com --role roles/owner
 
-gcloud iam service-accounts keys create ~/key.json --iam-account voice-data-app@speech-up-voice-collector.iam.gserviceaccount.com
+gcloud iam service-accounts keys create ~/key.json --iam-account speech-up-recorder-account@${PROJECT_ID}.iam.gserviceaccount.com
 
-export GOOGLE_APPLICATION_CREDENTIALS="/home/${USER}/key.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/home/${USER}/key.json" -->
 
 step 1:
-virtualenv -p python3 env
+virtualenv -p python env
 source env/bin/activate
 pip install -r requirements.txt
 
-KEY ERROR CLOUD_STORAGE_BUCKET
-export CLOUD_STORAGE_BUCKET=${PROJECT_ID}
-sudo gsutil mb gs://${PROJECT_ID}
+pip install -t lib -r requirements.txt
 
+KEY ERROR CLOUD_STORAGE_BUCKET
+<!-- export CLOUD_STORAGE_BUCKET=${PROJECT_ID} -->
+<!-- sudo gsutil mb gs://${PROJECT_ID} -->
+<!--
 pip install google-cloud -t [my_project]/lib/google/cloud
 
-pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
+pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 -->
 
 
 https://stackoverflow.com/questions/41905503/module-google-auth-httplib2-not-found-after-pip-installing-google-cloud-how-can

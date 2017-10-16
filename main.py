@@ -7,7 +7,7 @@ from flask import request
 from flask import session
 from werkzeug.utils import secure_filename
 
-from google.auth import compute_engine
+# from google.auth import compute_engine
 from google.cloud import storage
 
 import os
@@ -16,8 +16,8 @@ import uuid
 app = Flask(__name__)
 
 # Configure this environment variable via app.yaml
-storage_client = storage.Client()
-storage_client = storage.Client(credentials=credentials, project=project)
+# storage_client = storage.Client()
+
 CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
 # [end config]
 
