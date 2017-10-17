@@ -1,62 +1,54 @@
 **Open Speech Recording** is a small web application to collect short snippets
-of speech, and upload them to cloud storage. It's designed to help gather open
-speech data sets to train machine learning systems.
+of speech, and upload them to cloud storage.
 
 It's based around a small Flask app that will run on Google App Engine. This
 serves up a client-side Javascript app that prompts for a series of words,
 records the audio, and then POSTs the results back to the server.
 
-## Install gcloud
-https://cloud.google.com/sdk/docs/quickstart-mac-os-x
-./google-cloud-sdk/install.sh
-source '[path-to-my-home]/google-cloud-sdk/path.bash.inc'
-source '[path-to-my-home]/google-cloud-sdk/completion.bash.inc'
+## DEPLOYMENT INSTRUCTIONS
 
-gcloud not found?
-source path.bash.inc
-source completion.bash.inc
+# 1. Project Creation
+https://codelabs.developers.google.com/codelabs/cloud-vision-app-engine/index.html?index=..%2F..%2Findex#1
+If you don't already have a Google Account (Gmail or Google Apps), you must create one. Sign-in to Google Cloud Platform console (console.cloud.google.com) and create a new project:
 
+# 2. Billing
+Next, you'll need to enable billing in the Cloud Console in order to use Google Cloud resources.
 
+Running through this codelab shouldn't cost you more than a few dollars, but it could be more if you decide to use more resources or if you leave them running.
 
-Enabling APIs
+# 3. Google Cloud Shell
+https://codelabs.developers.google.com/codelabs/cloud-vision-app-engine/index.html?index=..%2F..%2Findex#2
+While Google Cloud can be operated remotely from your laptop, in this codelab we will be using Google Cloud Shell, a command line environment running in the Cloud. This Debian-based virtual machine is loaded with all the development tools you'll need (gcloud, python, virtualenv, pip and more), it offers a persistent 5GB home directory, and runs on the Google Cloud, greatly enhancing network performance and authentication. This means that all you will need for this codelab is a browser (yes, it works on a Chromebook).
+
+To activate Google Cloud Shell, from the developer console simply click the button on the top right-hand side (it should only take a few moments to provision and connect to the environment):
+
+# 4. Get code (done in Google Cloud Shell)
+git clone
+
+# 5. Enable the APIs (done in Google Cloud Shell)
 gcloud service-management enable storage-component.googleapis.com
 gcloud service-management enable storage-api.googleapis.com
 
 
-Authenticate API requests
-first try this:
-https://cloud.google.com/python/getting-started/tutorial-app
+# 6. Authenticate API requests (done in Google Cloud Shell)
+
 gcloud auth application-default login
 gcloud config set project speech-up-record-app
 
 
 https://codelabs.developers.google.com/codelabs/cloud-vision-app-engine/index.html?index=..%2F..%2Findex#6
-export PROJECT_ID=speech-up-record-app
-<!-- gcloud iam service-accounts create speech-up-record-app-account --display-name "speech-up-record-app account"
+export PROJECT_ID=WHATEVER_YOU_CALL_PROJECT
 
-gcloud projects add-iam-policy-binding ${PROJECT_ID} --member serviceAccount:speech-up-record-app-account@${PROJECT_ID}.iam.gserviceaccount.com --role roles/owner
-
-gcloud iam service-accounts keys create ~/key.json --iam-account speech-up-recorder-account@${PROJECT_ID}.iam.gserviceaccount.com
-
-export GOOGLE_APPLICATION_CREDENTIALS="/home/${USER}/key.json" -->
-
-step 1:
+# 7. Install dependencies (done in Google Cloud Shell)
+use python2.7, not 3
 virtualenv -p python env
 source env/bin/activate
 pip install -r requirements.txt
 
+Then run this command to make a lib of requirements in main directory
 pip install -t lib -r requirements.txt
 
-KEY ERROR CLOUD_STORAGE_BUCKET
-<!-- export CLOUD_STORAGE_BUCKET=${PROJECT_ID} -->
-<!-- sudo gsutil mb gs://${PROJECT_ID} -->
-<!--
-pip install google-cloud -t [my_project]/lib/google/cloud
 
-pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2 -->
-
-
-https://stackoverflow.com/questions/41905503/module-google-auth-httplib2-not-found-after-pip-installing-google-cloud-how-can
 ## Running
 
 To get started, you'll need to edit app.yaml to point to your own storage bucket
