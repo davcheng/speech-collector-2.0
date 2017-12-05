@@ -14,6 +14,6 @@ handlers:
 
 #[START env]
 env_variables:
-    CLOUD_STORAGE_BUCKET: speech-up-record-app
-    SESSION_SECRET_KEY: f304ec2d97e20e4d717994314b7586387111cd6a
+    CLOUD_STORAGE_BUCKET: speech-up-recorder-app
+   # SESSION_SECRET_KEY: f304ec2d97e20e4d717994314b7586387111cd6a
 #[END env]

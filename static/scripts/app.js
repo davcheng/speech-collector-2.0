@@ -179,13 +179,25 @@ function visualize(stream) {
 }
 
 var allWords = [
-  'Bad',
+'Art',  
+'Bad',
   'Bat',
   'Cad',
   'Cart',
   'Card',
+'Cat',
   'Chad',
-  'Chat',
+  'Chair',
+'Chat',
+'Cheap',
+'Child',
+'Chin',
+'Chip',
+'Chop',
+'Chore',
+'Church',
+'Cop',
+'Core',
   'Dart',
   'Dee',
   'Doy',
@@ -193,17 +205,33 @@ var allWords = [
   'Not',
   'Nod',
   'Part',
+'Peach',
   'Pit',
   'Pod',
   'Pot',
+'Reach',
   'See',
   'She',
   'Tea',
+'Teach',
+'Tar',
+'Top',
   'Toy',
+'Said',
+'Shed',
   'Shine',
+'Ship',
   'Shoe',
+'Shoot',
   'Shop',
+'Show',
+'Sign',
+'Sip',
+'Sop',
+'Sow',
   'Stop',
+'Sue',
+'Suit',
   'Tart',
   'White',
 ]
@@ -228,7 +256,7 @@ function shuffle(array) {
   return array;
 }
 
-var wantedWords = shuffle(allWords).slice(1,1);
+var wantedWords = shuffle(allWords).slice(1,12);
 
 // var wantedWords = [
 //   'Shop',
@@ -285,7 +313,7 @@ function getRecordedWords() {
 function getAllWantedWords() {
   var wordCounts = {};
   wantedWords.forEach(function(word) {
-    wordCounts[word] = 2;
+    wordCounts[word] = 1;
   });
   fillerWords.forEach(function(word) {
     wordCounts[word] = 1;
